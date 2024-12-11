@@ -134,6 +134,7 @@ body, html {
 .level {
     font-size: 2rem;
     font-weight: 800;
+    color: #000;
 }
 
 /* 設定按鈕的樣式 */
