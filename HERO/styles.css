@@ -152,8 +152,8 @@ body, html {
 
 /* 增加 HP 按鈕的樣式 */
 .hp-add-button {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     background-color: red;
     padding: 10px;
     border-radius: 50%;
@@ -161,7 +161,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 600;
     border: 2px solid #fff;
 }
@@ -206,7 +206,7 @@ body, html {
 
 /* 當前魔力的樣式 */
 .current-mana {
-    font-size: 10.4rem;
+    font-size: 8rem;
     font-weight: 550;
 }
 
@@ -226,8 +226,8 @@ body, html {
 /* 減少 HP 按鈕的樣式 */
 .hp-SUB-button {
     background-color: #282828;
-    width: 2.65rem;
-    height: 2.65rem;
+    width: 2.3rem;
+    height: 2.3rem;
     padding: 10px;
     border-radius: 50%;
     color: white;
@@ -235,7 +235,7 @@ body, html {
     justify-content: center;
     align-items: center;
     margin: 2px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     border: 1px solid gold;
 }
