@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>勇者選擇</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 選擇職業與輸入名稱彈窗 -->
+    <div class="popup">
+        <div id="alert" class="alert">請選擇職業並輸入名稱！</div>
+        <div class="popupTitle">勇者大人&nbsp;&nbsp;請選擇你的職業</div>
+        <div class="button-group">
+            <button class="job-button" data-job="戰士">戰士</button>
+            <button class="job-button" data-job="遊俠">遊俠</button>
+            <button class="job-button" data-job="牧師">牧師</button>
+        </div>
+        <div class="input-group">
+            <input id="heroName" type="text" maxlength="6" placeholder="請輸入您的勇者名稱">
+        </div>
+        <button class="ok-button">OK</button>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="level">LV 1</div>
+            <div id="hero-info"></div>
+            <div class="settings">⚙️</div>
+        </header>
+        <div class="hp-add-container">
+            <div class="hp-add-button">+1</div>
+            <div class="hp-add-button">+3</div>
+            <div class="hp-add-button">+5</div>
+            <div class="shield"><img src="./shield.png" alt="盾牌"></div>
+        </div>
+        <div class="hp-display">
+            <span class="current-hp">10</span>
+            <span class="max-hp">/&nbsp;10</span>
+        </div>
+        <div class="hp-SUB-buttons">
+            <div class="hp-SUB-button">-1</div>
+            <div class="hp-SUB-button">-2</div>
+            <div class="hp-SUB-button">-3</div>
+            <div class="hp-SUB-button">-4</div>
+            <div class="hp-SUB-button">-5</div>
+            <div class="hp-SUB-button">-6</div>
+            <div class="hp-SUB-button">-7</div>
+            <div class="hp-SUB-button">-8</div>
+            <div class="hp-SUB-button">-9</div>
+            <div class="hp-SUB-button">-10</div>
+        </div>
+        <div class="mana-display">
+            <span class="mana-button mana-SUB-button"> &lt; </span>
+            <span class="current-mana">4</span>
+            <span class="mana-button mana-add-button"> &gt; </span>
+        </div>
+        <div class="footer">
+            <button class="add-mana">Add 1 Mana</button>
+        </div>
+    </div>
+
+     <!-- MENU彈窗 -->
+     <div class="menu-popup">
+        <button class="menu-option menu-passive-skill">被動技能</button>
+        <button class="menu-option menu-adjust-level">調整等級</button>
+        <button class="menu-option menu-change-job">重新開始</button>
+        <button class="menu-option menu-cancel">取消</button>
+    </div>
+
+    <!-- 黑色半透明遮罩 -->
+    <div class="black-overlay"></div>
+
+    <!-- 被動技能介紹彈窗 -->
+    <div class="passive-skill-popup menu-popup2">
+        <h2>被動技能</h2>
+        <p class="skill-description">此處會顯示職業技能描述。</p>
+        <button class="close-passive-skill">知道了</button>
+    </div>
+
+    <!-- 調整等級與加成彈窗 -->
+    <div class="adjust-level-popup">
+        <div class="adjust-level-content">
+            <div class="adjust-row">
+                <span class="adjust-title">LEVEL UP</span>
+                <button class="adjust-decrease-level">◀</button>
+                <span class="adjust-level-display">1</span>
+                <button class="adjust-increase-level">▶</button>
+            </div>
+            <div class="adjust-row">
+                <span class="adjust-title">HP ADD</span>
+                <button class="adjust-decrease-hp">◀</button>
+                <span class="adjust-hp-display">4</span>
+                <button class="adjust-increase-hp">▶</button>
+            </div>
+            <div class="adjust-buttons">
+                <button class="adjust-confirm">確定</button>
+                <button class="adjust-cancel">取消</button>
+            </div>
+        </div>
+    </div>   
+
+    <!-- 確認彈窗 -->
+    <div class="confirm-popup menu-popup2">
+        <p>確定要重新開始嗎？</p>
+        <button class="confirm-yes">確定</button>
+        <button class="confirm-no">取消</button>
+    </div>
+
+    <!-- 黑色遮罩 -->
+    <div class="overlay"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
