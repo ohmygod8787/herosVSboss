@@ -531,16 +531,13 @@ body, html {
 
 /* iPhone XR, 11 */
 @media only screen and (min-width: 414px) {
-    .level{
-        color: skyblue;
-    }
     .hp-add-button{
         width: 3.5rem;
         height: 3.5rem;
         font-size: 2.5rem;
     }
     .current-hp{
-        font-size: 12rem;
+        font-size: 11.4rem;
     }
     .hp-display{
         margin: -.8rem;
