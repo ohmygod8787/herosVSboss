@@ -430,7 +430,7 @@ body, html {
 /* iPhone XR, 11 */
 @media only screen and (min-width: 414px) {
     .level{
-        color: yellowgreen;
+        color: burlywood;
     }
     .hp-add-button{
         width: 3.5rem;
@@ -449,8 +449,8 @@ body, html {
         font-size: 2rem;
     }
     .boss-status-item button{
-        height: 4rem !important;
-        font-size: 2rem !important;
+        height: 4.4rem !important;
+        font-size: 2.2rem !important;
     }
     .footer{
         height: 2.5rem;
