@@ -152,8 +152,8 @@ body, html {
 
 /* 增加 HP 按鈕的樣式 */
 .hp-add-button {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background-color: red;
     padding: 10px;
     border-radius: 50%;
@@ -161,7 +161,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     font-weight: 600;
     border: 2px solid #fff;
 }
@@ -182,7 +182,7 @@ body, html {
 
 /* 當前 HP 的樣式 */
 .current-hp {
-    font-size: 10rem;
+    font-size: 11rem;
 }
 
 /* 最大 HP 的樣式 */
@@ -227,8 +227,8 @@ body, html {
 /* 減少 HP 按鈕的樣式 */
 .hp-SUB-button {
     background-color: #282828;
-    width: 2rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     padding: 10px;
     border-radius: 50%;
     color: white;
@@ -236,7 +236,7 @@ body, html {
     justify-content: center;
     align-items: center;
     margin: 2px;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 500;
     border: 1px solid gold;
 }
@@ -267,7 +267,7 @@ body, html {
     border-radius: 5px;
     font-size: 2.2rem;
     font-weight: 600;
-    line-height: 3.5rem;
+    line-height: 2.2rem;
 }
 
 /* 當前 HP 的黃色樣式 */
