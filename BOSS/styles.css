@@ -429,9 +429,6 @@ body, html {
 
 /* iPhone XR, 11 */
 @media only screen and (min-width: 414px) {
-    .level{
-        color: indigo;
-    }
     .hp-add-button{
         width: 3.5rem;
         height: 3.5rem;
