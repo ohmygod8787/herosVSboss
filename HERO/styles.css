@@ -181,7 +181,7 @@ body, html {
 
 /* 當前 HP 的樣式 */
 .current-hp {
-    font-size: 15rem;
+    font-size: 10rem;
 }
 
 /* 最大 HP 的樣式 */
