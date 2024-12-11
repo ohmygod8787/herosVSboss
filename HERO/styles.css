@@ -134,7 +134,6 @@ body, html {
 .level {
     font-size: 2rem;
     font-weight: 800;
-    color: #000;
 }
 
 /* 設定按鈕的樣式 */
@@ -531,7 +530,9 @@ body, html {
 
 
 /* iPhone XR, 11 */
-@media only screen and (min-width: 414px) and (max-height: 896px) {
-
+@media only screen and (min-width: 414px) {
+    .level{
+        color: #00aaff;
+    }
 }
 
