@@ -45,9 +45,19 @@ body, html {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* 選擇職業時的按鈕樣式 */
-.job-button.selected-boss {
-    background-color: purple;
+/* 選擇不同職業時的按鈕樣式 */
+.job-button.selected-warrior {
+    background-color: black;
+    color: white;
+}
+
+.job-button.selected-rogue {
+    background-color: #008000;
+    color: white;
+}
+
+.job-button.selected-priest {
+    background-color: #acabab;
     color: white;
 }
 
@@ -142,8 +152,8 @@ body, html {
 
 /* 增加 HP 按鈕的樣式 */
 .hp-add-button {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     background-color: red;
     padding: 10px;
     border-radius: 50%;
@@ -151,7 +161,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 600;
     border: 2px solid #fff;
 }
@@ -167,16 +177,43 @@ body, html {
 .hp-display {
     text-align: center;
     color: red;
+    margin: -.8rem;
 }
 
 /* 當前 HP 的樣式 */
 .current-hp {
-    font-size: 15rem;
+    font-size: 10rem;
 }
 
 /* 最大 HP 的樣式 */
 .max-hp {
     font-size: 3.5rem;
+}
+
+/* 魔力顯示區域的樣式 */
+.mana-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 0 .85rem;
+    color: blue;
+}
+
+/* 減少魔力按鈕的樣式 */
+.mana-SUB-button {
+    text-align: left;
+}
+
+/* 當前魔力的樣式 */
+.current-mana {
+    font-size: 6.5rem;
+    font-weight: 550;
+}
+
+/* 增加魔力按鈕的樣式 */
+.mana-add-button {
+    text-align: right;
 }
 
 /* 減少 HP 按鈕組的樣式 */
@@ -190,8 +227,8 @@ body, html {
 /* 減少 HP 按鈕的樣式 */
 .hp-SUB-button {
     background-color: #282828;
-    width: 2.65rem;
-    height: 2.65rem;
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 10px;
     border-radius: 50%;
     color: white;
@@ -204,25 +241,38 @@ body, html {
     border: 1px solid gold;
 }
 
+/* 魔力按鈕的樣式 */
+.mana-button {
+    width: 5rem;
+    font-size: 6rem;
+    font-weight: 900;
+}
+
 /* 頁腳的樣式 */
 .footer {
     text-align: center;
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 3.5rem;
-    background-color: black;
+    height: 2.2rem;
+    background-color: blue;
     padding: 16px 0;
 }
 
-.end-turn{
-    background-color: black;
+/* 增加魔力的按鈕樣式 */
+.add-mana {
+    background-color: blue;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 2.2rem;
     font-weight: 600;
-    line-height: 3.5rem;
+    line-height: 2.2rem;
+}
+
+/* 當前 HP 的黃色樣式 */
+.yellow-style {
+    color: gold;
 }
 
 /* 黑色半透明遮罩 */
@@ -285,6 +335,58 @@ body, html {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 1001; /* 在彈窗下方，但在其他元素上方 */
+}
+
+/* 被動技能彈窗 */
+.passive-skill-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b3d5e6;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1002;
+    padding: 20px;
+}
+
+.passive-skill-popup h2 {
+    width: 136px;
+    border-radius: 27px;
+    background-color: #fff;
+}
+
+.passive-skill-popup .skill-description {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 14px;
+    border-radius: 14px;
+}
+
+.passive-skill-popup .close-passive-skill {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.passive-skill-popup .close-passive-skill:hover {
+    background-color: #0088cc;
+}
+
+.annotation-text {
+    font-family: "標楷體", serif;
+    font-size: 1.2rem; /* 縮小字體大小 */
+    color: red; /* 可根據需求更改顏色 */
 }
 
 /* 調整等級彈窗樣式 */
@@ -429,16 +531,13 @@ body, html {
 
 /* iPhone XR, 11 */
 @media only screen and (min-width: 414px) {
-    .level{
-        color: indigo;
-    }
     .hp-add-button{
         width: 3.5rem;
         height: 3.5rem;
         font-size: 2.5rem;
     }
     .current-hp{
-        font-size: 12rem;
+        font-size: 11.4rem;
     }
     .hp-display{
         margin: -.8rem;
@@ -448,14 +547,17 @@ body, html {
         height: 2.75rem;
         font-size: 2rem;
     }
-    .boss-status-item button{
-        height: 4.4rem !important;
-        font-size: 2.2rem !important;
+    .mana-button {
+        width: 7rem;
+        font-size: 6rem;
+    }
+    .current-mana{
+        font-size: 8rem;
     }
     .footer{
         height: 2.5rem;
     }
-    .end-turn{
+    .add-mana{
         font-size: 2.2rem;
         line-height: 2.2rem;
     }
