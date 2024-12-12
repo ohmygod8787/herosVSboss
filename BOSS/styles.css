@@ -142,8 +142,8 @@ body, html {
 
 /* 增加 HP 按鈕的樣式 */
 .hp-add-button {
-    width: 3rem;
-    height: 3rem;
+    width: 2.75rem;
+    height: 2.75rem;
     background-color: red;
     padding: 10px;
     border-radius: 50%;
@@ -151,7 +151,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 600;
     border: 2px solid #fff;
 }
@@ -167,6 +167,7 @@ body, html {
 .hp-display {
     text-align: center;
     color: red;
+    margin: -.4rem;
 }
 
 /* 當前 HP 的樣式 */
@@ -190,8 +191,8 @@ body, html {
 /* 減少 HP 按鈕的樣式 */
 .hp-SUB-button {
     background-color: #282828;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
     padding: 10px;
     border-radius: 50%;
     color: white;
@@ -199,7 +200,7 @@ body, html {
     justify-content: center;
     align-items: center;
     margin: 2px;
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 500;
     border: 1px solid gold;
 }
