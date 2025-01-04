@@ -197,7 +197,7 @@ $(document).ready(function () {
             case "戰士":
                 skillTitle = "戰士被動";
                 skillDescription = `
-                    戰鬥開始時獲得護盾。當你使勇者獲得護盾時，若目標已有護盾則造成盾爆。
+                    戰鬥開始時獲得護盾。當你使勇者獲得護盾時，若目標已有護盾則造成盾爆。注
                     <br><span class="annotation-text">*注:盾爆會造成BOSS 3點傷害，盾爆後護盾不會消失。</span>`;
                 break;
             case "遊俠":
@@ -209,8 +209,8 @@ $(document).ready(function () {
                 skillTitle = "牧師被動";
                 skillDescription = `
                     你的棄牌移動附加功能【型態轉換】，可以決定是否轉換或結束聖焰型態 (被動)注1注2
-                    <br><span class="annotation-text">*注1聖焰型態下所有角色禁療。你對他們的恢復生命都會轉化成對BOSS的傷害，結算時你的傷害最高上限為15點。</span>
-                    <br><span class="annotation-text">注2當你死亡時，則結束聖焰狀態。</span>`;
+                    <br><span class="annotation-text">注1:聖焰型態下所有角色禁療。你對他們的恢復生命都會轉化成對BOSS的傷害，結算時你的傷害最高上限為15點。</span>
+                    <br><span class="annotation-text">*注2:當你死亡時，則結束聖焰狀態。</span>`;
                 break;
             default:
                 skillTitle = "未知被動";
@@ -302,6 +302,79 @@ $(document).ready(function () {
         $(".adjust-level-popup").fadeOut(); // 關閉彈窗
         $(".black-overlay").fadeOut(); // 關閉黑色遮罩
     });
+
+    // 在文件頂部添加新的彈窗內容變量
+    const gameRulesPopupContent = `
+    <h2>遊戲規則</h2>
+    <p class="game-rules">
+        <span class="blue-text">【棋子】</span>代表勇者，共有三個分別為黑(戰士)、綠(遊俠)、灰色(牧師)棋子。<br>
+        <span class="blue-text">【生命】</span>代表角色生命，生命為零的角色死亡。死亡後該角色無法被恢復生命/魔力、抽牌及出牌。<br>
+        <span class="blue-text">【護盾】</span>格擋一次對你造成的傷害，使傷害降為零點；每個角色最多擁有一個護盾。<br>
+        <span class="blue-text">【環】</span>分為一環與二環，有些牌需要依照牌上的限制在規定環內才能打出。<br>
+        <span class="blue-text">【魔力】</span>代表勇者魔力，若有足夠的魔力在可以你的回合依手牌上標示的魔力消耗打出手牌。<br>
+        <span class="blue-text">【移動棄牌】</span>捨棄你打出的牌來移動，無牌可出或想移動時可以打出。將你移動到目前所處位置的另一環，若處於無法移動的勇者仍可以打出，但會停留在原本所處的位置。<br>
+        <span class="blue-text">【寶藏牌庫】</span>由零到三費牌組成的牌庫，勇者在獲得勝利時可以抽取寶藏牌庫。<br>
+        <span class="blue-text">【初始】</span>每人選擇一個顏色的棋子，獲得對應顏色的勇者牌庫(十三張牌)、10點生命、4點魔力。<br>
+        <span class="blue-text">【開場】</span>將你的勇者牌庫洗牌，洗完後抽取五張牌。<br>
+        <span class="blue-text">【勇者回合】</span>回合開始時，從你的勇者牌庫抽取一張牌並恢復一點魔力。若暈眩或施法狀態下無法抽牌僅能獲取魔力；若勇者牌庫無牌時則將棄牌堆洗回勇者牌庫。選擇一張手牌並以覆蓋的方式打出。所有勇者都打出覆蓋牌後一同打開結算。<br>
+        <span class="blue-text">【BOSS回合】</span>回合開始時，從BOSS牌庫抽取一張牌。若有BOSS被動可能在此時執行。<br>
+        <span class="blue-text">【戰鬥勝利】</span>若造成BOSS生命為零點以下，勇者即為勝利。死亡的勇者復活且所有勇者生命恢復至全滿！從寶藏牌庫抽取三張牌，可以選擇最多兩張保留。保留的牌加進你的勇者牌庫，不被保留的牌統一洗回寶藏牌庫。<br>
+        <span class="blue-text">【戰鬥失敗】</span>所有勇者生命為零點，遊戲結束。<br>
+        <span class="blue-text">【牌種表】</span><br>
+        瞬發牌：打出牌後的效果會立即生效。<br>
+        蓄力牌：打出牌後進入施法狀態，牌的效果不會立即生效；直至下個你的回合結算時生效並解除施法狀態。<br>
+        持續牌：打出後進入施法狀態，牌的效果會立即生效持續至下個你的回合結算；結算後解除施法狀態。<br>
+        道具牌：打出後裝備此道具，每個角色僅能裝備一個道具。<br>
+
+        <span class="blue-text">【狀態表】</span><br>
+        <strong>1.負面狀態1型</strong><br>
+        負面狀態1型:會立刻發動效果，且會持續至目標的回合結束時；才會恢復為正常狀態。<br>
+        1-1暈眩狀態：無法抽牌、出牌。若處於施法狀態下暈眩，則會被中斷施法。<br>
+        1-2禁療：無法恢復生命<br>
+        1-3限制移動：無法移動至另一環<br>
+        <strong>2.負面狀態2型</strong><br>
+        負面狀態2型: 會立刻發動效果，但不會持續。<br>
+        2-1中斷施法：結束施法狀態，並將剛剛被中斷施法的蓄力或持續牌丟棄至棄牌堆。<br>
+        2-2繳械：裝備的道具會被丟棄至棄牌堆<br>
+        2-3擊退：往外移動一環，若已在最外環則會停留在原本所處的位置。<br>
+        <strong>3.其他</strong><br>
+        3-1施法狀態：無法移動、抽牌及出牌(但能獲取魔力)。
+    </p>
+    
+    <button class="close-rules-popup">關閉</button>
+`;
+
+
+
+$(document).ready(function () {
+    // 添加遊戲規則按鈕到設定彈窗
+    $(".menu-popup").prepend('<button class="menu-option menu-game-rules">遊戲規則</button>');
+
+    // 處理遊戲規則按鈕點擊
+    $(".menu-game-rules").click(function () {
+        $(".overlay").fadeIn(); // 顯示遮罩
+        $("body").append(`<div class="game-rules-popup">${gameRulesPopupContent}</div>`); // 添加彈窗到頁面
+        $(".game-rules-popup").fadeIn(); // 顯示彈窗
+    });
+
+    // 處理關閉遊戲規則彈窗
+    $(document).on('click', '.close-rules-popup', function () {
+        $(".game-rules-popup").fadeOut(function() { $(this).remove(); }); // 移除彈窗
+        $(".overlay").fadeOut(); // 隱藏遮罩
+    });
+
+    // 點擊遮罩時，隱藏遊戲規則彈窗和遮罩
+    $(".overlay").click(function() {
+        if ($(".game-rules-popup").is(":visible")) {
+            $(".game-rules-popup").fadeOut(function() { $(this).remove(); }); // 移除彈窗
+            $(this).fadeOut(); // 隱藏遮罩
+        }
+    });
+});
+
+
+
+
 
     // 取消按鈕
     $(".adjust-cancel").click(function () {

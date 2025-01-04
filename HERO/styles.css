@@ -527,6 +527,52 @@ body, html {
     background-color: #999;
 }
 
+/* 遊戲規則彈窗樣式調整 */
+.game-rules-popup {
+    max-height: 54%;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    z-index: 1010;
+    display: none;
+}
+
+.blue-text {
+    color: #0000ff; /* 設置文字顏色為藍色 */
+}
+
+.game-rules-popup h2 {
+    margin-top: 0;
+}
+
+.game-rules-popup p {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.close-rules-popup {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    width: 100px;
+}
+
 
 
 /* iPhone XR, 11 */
