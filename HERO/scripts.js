@@ -197,20 +197,20 @@ $(document).ready(function () {
             case "戰士":
                 skillTitle = "戰士被動";
                 skillDescription = `
-                    戰鬥開始時獲得護盾。當你使勇者獲得護盾時，若目標已有護盾；則使舊的護盾造成盾爆。
-                    <br><span class="annotation-text">*注:盾爆會造成BOSS 3點傷害，盾爆後舊護盾消失。</span>`;
+                    戰鬥開始時獲得護盾。當你使勇者獲得護盾時，若目標已有護盾則造成盾爆。
+                    <br><span class="annotation-text">*注:盾爆會造成BOSS 3點傷害，盾爆後護盾不會消失。</span>`;
                 break;
             case "遊俠":
                 skillTitle = "遊俠被動";
                 skillDescription = `
-                    若你的回合內裝備的道具效果或打出的牌有使你移動至另一環，則在你的回合結束時；環內所有勇者魔力恢復1點。`;
+                    若你的回合打出具有移動效果的牌，則在你的回合結束時；環內所有勇者魔力恢復1點。`;
                 break;
             case "牧師":
                 skillTitle = "牧師被動";
                 skillDescription = `
-                    當你的勇者牌庫抽完時，可以決定是否結束或轉換成聖焰型態。
-                    <br><span class="annotation-text">*注1:聖焰型態下對所有角色的恢復生命都會轉化成對BOSS的傷害，回合結算時你的總傷害最高上限為15點。</span>
-                    <br><span class="annotation-text">*注2:聖焰型態下死亡時，立即結束聖焰型態。</span>`;
+                    你的棄牌移動附加功能【型態轉換】，可以決定是否轉換或結束聖焰型態 (被動)注1注2
+                    <br><span class="annotation-text">*注1聖焰型態下所有角色禁療。你對他們的恢復生命都會轉化成對BOSS的傷害，結算時你的傷害最高上限為15點。</span>
+                    <br><span class="annotation-text">注2當你死亡時，則結束聖焰狀態。</span>`;
                 break;
             default:
                 skillTitle = "未知被動";
