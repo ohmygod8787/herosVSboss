@@ -11,6 +11,13 @@ body, html {
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
+/* CSS 中強制不允許縮放 */
+html, body {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
 
 /* 彈出視窗的樣式 */
 .popup {
