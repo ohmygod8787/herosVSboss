@@ -49,16 +49,25 @@ body, html {
 .job-button.selected-warrior {
     background-color: black;
     color: white;
+    border: 3px solid gold;
 }
 
 .job-button.selected-rogue {
     background-color: #008000;
     color: white;
+    border: 3px solid gold;
 }
 
 .job-button.selected-priest {
     background-color: #acabab;
     color: white;
+    border: 3px solid gold;
+}
+
+.job-button.selected-boss {
+    background-color: #6a0dad;
+    color: white;
+    border: 3px solid gold;
 }
 
 /* 輸入組的樣式 */
@@ -170,7 +179,11 @@ body, html {
 .shield {
     border-radius: 50%;
     color: black;
-    margin-top: .15rem;
+    position: absolute;
+    right: .75rem;
+}
+.shield img{
+    width: 95%;
 }
 
 /* HP 顯示區域的樣式 */
@@ -188,32 +201,6 @@ body, html {
 /* 最大 HP 的樣式 */
 .max-hp {
     font-size: 3.5rem;
-}
-
-/* 魔力顯示區域的樣式 */
-.mana-display {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 0 .85rem;
-    color: blue;
-}
-
-/* 減少魔力按鈕的樣式 */
-.mana-SUB-button {
-    text-align: left;
-}
-
-/* 當前魔力的樣式 */
-.current-mana {
-    font-size: 6.5rem;
-    font-weight: 550;
-}
-
-/* 增加魔力按鈕的樣式 */
-.mana-add-button {
-    text-align: right;
 }
 
 /* 減少 HP 按鈕組的樣式 */
@@ -241,13 +228,6 @@ body, html {
     border: 1px solid gold;
 }
 
-/* 魔力按鈕的樣式 */
-.mana-button {
-    width: 5rem;
-    font-size: 6rem;
-    font-weight: 900;
-}
-
 /* 頁腳的樣式 */
 .footer {
     text-align: center;
@@ -259,8 +239,8 @@ body, html {
     padding: 16px 0;
 }
 
-/* 增加魔力的按鈕樣式 */
-.add-mana {
+/* 勇者的出戰牌組數量樣式 */
+.hero-deck {
     background-color: blue;
     color: white;
     border: none;
@@ -384,13 +364,60 @@ body, html {
 }
 
 .annotation-text {
-    font-family: "標楷體", serif;
-    font-size: 1.2rem; /* 縮小字體大小 */
-    color: red; /* 可根據需求更改顏色 */
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: blue;
 }
 
-/* 調整等級彈窗樣式 */
-.adjust-level-popup {
+.status-list-popup {
+    display: none;
+    position: fixed;
+    width: 80%;
+    max-width: 400px;
+    height: 60%;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.status-list-content {
+    max-height: 80%;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.blue-bold-text {
+    color: blue;
+    font-weight: bold;
+}
+
+.close-status-popup {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    width: 100px;
+    position: relative;
+    top: -10px;
+}
+
+.close-status-popup:hover {
+    background: #0056b3;
+}
+
+/* 調整生命的彈窗 */
+.adjust-hp-popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -402,48 +429,74 @@ body, html {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    z-index: 1002; /* 高於黑色遮罩 */
+    z-index: 1002;
     padding: 20px;
 }
 
-/* 調整等級內容樣式 */
-.adjust-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.adjust-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    flex: 1;
-    text-align: left; /* 保持文字靠左 */
-}
-
-.adjust-level-display,
-.adjust-hp-display {
+.adjust-hp-popup input {
+    width: 100%;
+    padding: 10px;
     font-size: 1.6rem;
-    font-weight: bold;
-    width: 50px;
-    text-align: center;
-}
-
-.adjust-decrease-level,
-.adjust-increase-level,
-.adjust-decrease-hp,
-.adjust-increase-hp {
-    background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 5px;
-    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.hp-alert {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.game-rules-popup {
+    display: none;
+    position: fixed;
+    width: 80%;
+    max-width: 400px;
+    height: 60%;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.game-rules-content {
+    max-height: 80%;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.blue-text {
+    color: blue;
+    font-weight: bold;
+}
+
+.close-rules-popup {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    flex: 0 0 30px; /* 固定寬度 */
-    height: 30px; /* 固定高度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.close-rules-popup:hover {
+    background: #0056b3;
 }
 
 /* 調整按鈕樣式 */
@@ -490,14 +543,14 @@ body, html {
     display: none; /* 預設隱藏 */
 }
 
-.confirm-popup p {
+.confirm-popup p ,.adjust-hp-popup h2{
     font-size: 1.4rem;
     margin-bottom: 20px;
     color: red;
     font-weight: bold;
 }
 
-.confirm-yes, .confirm-no {
+.confirm-yes, .confirm-no, .adjust-confirm-hp, .adjust-cancel-hp{
     width: 45%;
     padding: 10px;
     margin: 0 2%;
@@ -509,7 +562,7 @@ body, html {
     transition: background-color 0.3s;
 }
 
-.confirm-yes {
+.confirm-yes,.adjust-confirm-hp{
     background-color: #00aaff;
     color: white;
 }
