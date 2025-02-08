@@ -154,5 +154,16 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('touchmove', function (event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('dblclick', function (event) {
+            event.preventDefault();
+        }, { passive: false });
+    </script>
 </body>
 </html>
