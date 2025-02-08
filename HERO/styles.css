@@ -156,7 +156,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: .4rem;
+    margin: 1.2rem .4rem;
 }
 
 /* 增加 HP 按鈕的樣式 */
@@ -222,10 +222,10 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2px;
     font-size: 2rem;
     font-weight: 500;
     border: 1px solid gold;
+    margin: 0.5rem 2px;
 }
 
 /* 頁腳的樣式 */
