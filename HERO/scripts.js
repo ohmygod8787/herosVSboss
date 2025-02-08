@@ -34,21 +34,29 @@ $(document).ready(function () {
 
     // 職業按鈕點擊事件
     $(".job-button").click(function () {
-        $(".job-button").removeClass("selected-warrior selected-rogue selected-priest selected-boss"); // 先清除所有選中狀態
+        $(".job-button").removeClass("selected-warrior selected-rogue selected-priest selected-boss");
         const job = $(this).data("job");
 
         if (job === "黑色") {
             $(this).addClass("selected-warrior");
             $("body").css("background-color", "black");
+            $(".shield").show(); // 顯示盾牌
+            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
         } else if (job === "綠色") {
             $(this).addClass("selected-rogue");
             $("body").css("background-color", "#008000");
+            $(".shield").show(); // 顯示盾牌
+            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
         } else if (job === "灰色") {
             $(this).addClass("selected-priest");
             $("body").css("background-color", "#acabab");
+            $(".shield").show(); // 顯示盾牌
+            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
         } else if (job === "BOSS") {
             $(this).addClass("selected-boss");
             $("body").css("background-color", "#4B0082"); // 深紫色
+            $(".shield").hide(); // 隱藏盾牌
+            $(".hp-SUB-button.all-button").text("-100"); // **BOSS 時變成 -100**
         }
         selectedJob = job;
     });
@@ -56,7 +64,7 @@ $(document).ready(function () {
     // OK 按鈕點擊事件
     $(".ok-button").click(function () {
         const heroName = $("#heroName").val().trim();
-        if (!selectedJob || heroName === "") {
+        if (!selectedJob) {
             $("#alert").fadeIn().delay(2000).fadeOut();
             return;
         }
@@ -64,7 +72,7 @@ $(document).ready(function () {
         $(".popup").hide();
         $(".main-content").show();
 
-        const heroInfo = `${selectedJob} - ${heroName}`;
+        const heroInfo = `${heroName}`;
         $("#hero-info").text(heroInfo);
     });
 
