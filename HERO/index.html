@@ -7,63 +7,69 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 選擇職業與輸入名稱彈窗 -->
+    <!-- 選擇棋子與輸入名稱彈窗 -->
     <div class="popup">
-        <div id="alert" class="alert">請選擇職業並輸入名稱！</div>
-        <div class="popupTitle">勇者大人&nbsp;&nbsp;請選擇你的職業</div>
+        <div id="alert" class="alert">請選擇棋子並輸入名稱！</div>
+        <div class="popupTitle">請選擇你的棋子</div>
         <div class="button-group">
-            <button class="job-button" data-job="戰士">戰士</button>
-            <button class="job-button" data-job="遊俠">遊俠</button>
-            <button class="job-button" data-job="牧師">牧師</button>
+            <button class="job-button" data-job="黑色">黑色</button>
+            <button class="job-button" data-job="綠色">綠色</button>
+            <button class="job-button" data-job="灰色">灰色</button>
+            <button class="job-button" data-job="BOSS">I'm BOSS</button>
+
         </div>
         <div class="input-group">
-            <input id="heroName" type="text" maxlength="6" placeholder="請輸入您的勇者名稱">
+            <input id="heroName" type="text" maxlength="6" placeholder="請輸入您的名稱">
         </div>
         <button class="ok-button">OK</button>
     </div>
 
     <div class="main-content">
         <header>
-            <div class="level">LV 1</div>
             <div id="hero-info"></div>
             <div class="settings">⚙️</div>
         </header>
         <div class="hp-add-container">
-            <div class="hp-add-button">+1</div>
-            <div class="hp-add-button">+3</div>
             <div class="hp-add-button">+5</div>
-            <div class="shield"><img src="./shield.png" alt="盾牌"></div>
+            <div class="hp-add-button">+10</div>
+            <div class="hp-add-button">+20</div>
+            <div class="hp-add-button">+30</div>
         </div>
+        <div class="hp-add-container">
+            <div class="hp-add-button">+40</div>
+            <div class="hp-add-button">+50</div>
+            <div class="hp-add-button">+60</div>
+            <div class="hp-add-button">+70</div>
+        </div>
+        <div class="shield"><img src="./shield.png" alt="盾牌"></div>
         <div class="hp-display">
             <span class="current-hp">10</span>
             <span class="max-hp">/&nbsp;10</span>
         </div>
         <div class="hp-SUB-buttons">
-            <div class="hp-SUB-button">-1</div>
-            <div class="hp-SUB-button">-2</div>
-            <div class="hp-SUB-button">-3</div>
-            <div class="hp-SUB-button">-4</div>
             <div class="hp-SUB-button">-5</div>
-            <div class="hp-SUB-button">-6</div>
-            <div class="hp-SUB-button">-7</div>
-            <div class="hp-SUB-button">-8</div>
-            <div class="hp-SUB-button">-9</div>
             <div class="hp-SUB-button">-10</div>
+            <div class="hp-SUB-button">-20</div>
+            <div class="hp-SUB-button">-30</div>
+            <div class="hp-SUB-button">-40</div>
+            <div class="hp-SUB-button">-50</div>
+            <div class="hp-SUB-button">-60</div>
+            <div class="hp-SUB-button">-70</div>
+            <div class="hp-SUB-button">-80</div>
+            <div class="hp-SUB-button">All</div>
         </div>
-        <div class="mana-display">
-            <span class="mana-button mana-SUB-button"> &lt; </span>
-            <span class="current-mana">4</span>
-            <span class="mana-button mana-add-button"> &gt; </span>
+        <!-- <div class="mana-display">
         </div>
         <div class="footer">
-            <button class="add-mana">Add 1 Mana</button>
-        </div>
+            <div class="hero-deck">Hero Deck：<span class="deck-sizer">13<span></div>
+        </div> -->
     </div>
 
      <!-- MENU彈窗 -->
      <div class="menu-popup">
-        <button class="menu-option menu-passive-skill">被動技能</button>
-        <button class="menu-option menu-adjust-level">調整等級</button>
+        <button class="menu-option menu-game-rules">遊戲規則</button>
+        <button class="menu-option menu-status-list">狀態列表</button>
+        <button class="menu-option menu-adjust-hp">調整生命</button>
         <button class="menu-option menu-change-job">重新開始</button>
         <button class="menu-option menu-cancel">取消</button>
     </div>
@@ -71,35 +77,71 @@
     <!-- 黑色半透明遮罩 -->
     <div class="black-overlay"></div>
 
-    <!-- 被動技能介紹彈窗 -->
-    <div class="passive-skill-popup menu-popup2">
-        <h2>被動技能</h2>
-        <p class="skill-description">此處會顯示職業技能描述。</p>
-        <button class="close-passive-skill">知道了</button>
+    <!-- 遊戲規則彈窗 -->
+    <div class="game-rules-popup" style="display: none;">
+        <h2>遊戲規則</h2>
+        <div class="game-rules-content">
+            <p><span class="blue-text">【棋子】</span> 代表勇者，共有三個分別為黑、綠、灰色的棋子。</p>
+            <p><span class="blue-text">【生命】</span> 代表角色生命，生命為零的角色死亡。死亡後該角色丟棄所有場上的牌，且無法再做任何行動。</p>
+            <p><span class="blue-text">【品質】</span> 牌的品質分為普通(1)、魔法(2)、稀有(3)、史詩(4)、傳說(5)，你組成的勇者牌庫所有牌品質刮號數字相加不可超過品質上限25。</p>
+            <p><span class="blue-text">【護盾】</span> 每名勇者最多擁有一個護盾，護盾會免疫你受到的一半傷害。BOSS對擁有護盾的勇者無法造成暴擊，護盾狀態下受到暴擊只能造成普通傷害。</p>
+            <p><span class="blue-text">【環】</span> 分為一環與二環，有些牌需要依照牌上的限制在規定環內才能打出。</p>
+            <p><span class="blue-text">【棄牌移動】</span> 捨棄你打出的牌來移動，無牌可出或想移動時可以打出。將你移動到目前所處位置的另一環，若處於無法移動的勇者仍可以打出，但會停留在原本所處的位置。</p>
+            <p><span class="blue-text">【寶藏牌庫】</span> 由品質為稀有到傳說牌組成的牌庫，勇者在初始與擊敗BOSS獲得勝利時可以抽取寶藏牌庫。</p>
+            <p><span class="blue-text">【初始】</span> 每人選擇一個顏色的棋子，並隨機抽取普通牌八張、寶藏牌庫八張牌組成勇者牌庫，並獲得100點生命。</p>
+            <p><span class="blue-text">【開場】</span> 我方先手，將你的勇者牌庫洗牌；洗完後抽取五張牌。而因BOSS後手，BOSS會直接裝備道具。</p>
+            <p><span class="blue-text">【勇者回合】</span></p>
+            <p>1.回合開始時</p>
+            <p>1-1從你的勇者牌庫抽取一張牌 *注</p>
+            <p>*注:暈眩或施法狀態下無法抽牌，若勇者牌庫無牌時則將棄牌堆洗回勇者牌庫。</p>
+            <p>1-2選擇一張手牌並以覆蓋的方式打出。所有勇者都打出覆蓋牌後一同打開結算。</p>
+            <p>2.結算</p>
+            <p>2-1結算以具有移動效果的牌優先移動位置，只能移動最多一次。</p>
+            <p>2-2所有的牌效果才會一起生效</p>
+            <p>3.回合結束時</p>
+            <p>3-1有些技能可能在此刻執行</p>
+            <p>3-2由負面狀態(暈眩、禁療及限制移動)恢復為正常狀態，BOSS回合開始。</p>
+        </div>
+        <button class="close-rules-popup">關閉</button>
     </div>
 
-    <!-- 調整等級與加成彈窗 -->
-    <div class="adjust-level-popup">
-        <div class="adjust-level-content">
-            <div class="adjust-row">
-                <span class="adjust-title">LEVEL UP</span>
-                <button class="adjust-decrease-level">◀</button>
-                <span class="adjust-level-display">1</span>
-                <button class="adjust-increase-level">▶</button>
-            </div>
-            <div class="adjust-row">
-                <span class="adjust-title">HP ADD</span>
-                <button class="adjust-decrease-hp">◀</button>
-                <span class="adjust-hp-display">4</span>
-                <button class="adjust-increase-hp">▶</button>
-            </div>
-            <div class="adjust-buttons">
-                <button class="adjust-confirm">確定</button>
-                <button class="adjust-cancel">取消</button>
-            </div>
-        </div>
-    </div>   
+    <!-- 狀態列表彈窗 -->
+    <div class="status-list-popup" style="display: none;">
+        <h2 style="margin-top: 0;">狀態列表</h2>
+        <div class="status-list-content">
+            <p><span class="blue-bold-text">1. 負面狀態1型</span><br>
+            負面狀態1型: 會立刻發動效果，且會持續至目標的回合結束時；才會恢復為正常狀態 。</p>
+            <p>1-1 『暈眩』：無法抽牌、出牌。</p>
+            <p>1-2 『禁療』：無法恢復生命</p>
+            <p>1-3 『限制移動』：無法移動至另一環</p>
 
+            <p><span class="blue-bold-text">2. 負面狀態2型</span><br>
+            負面狀態2型: 會立刻發動效果，但不會持續至目標的回合結束。</p>
+            <p>2-1 『中斷施法』：結束施法狀態，並丟棄剛剛被中斷施法的蓄力或持續牌。</p>
+            <p>2-2 『繳械』：所有裝備的道具丟棄</p>
+            <p>2-3 『破甲』：消耗護盾</p>
+
+            <p>3. 其他</p>
+            <p>3-1 施法狀態：免疫暈眩，但無法移動、抽牌及出牌</p>
+            <p>3-2 誤傷：受到來自勇者的傷害，傷害固定為 10 點。此傷害只能被降低無法被提升。</p>
+            <p>3-3 『暴擊』：傷害為雙倍</p>
+            <p>3-4 『吸血』：結算時，恢復等同你造成的所有傷害的生命。</p>
+        </div>
+        <button class="close-status-popup">關閉</button>
+    </div>
+
+    <!-- 調整生命彈窗 -->
+    <div class="adjust-hp-popup" style="display: none;">
+        <h2>調整生命</h2>
+        <input type="number" id="hp-input" min="5" max="995" step="5" placeholder="請輸入生命數值">
+        <div class="hp-alert">請輸入 5~990 之間的 5 的倍數</div>
+        <div class="adjust-buttons">
+            <button class="adjust-confirm-hp">確定</button>
+            <button class="adjust-cancel-hp">取消</button>
+        </div>
+    </div>
+
+ 
     <!-- 確認彈窗 -->
     <div class="confirm-popup menu-popup2">
         <p>確定要重新開始嗎？</p>
