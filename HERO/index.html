@@ -41,7 +41,10 @@
             <div class="hp-add-button">+60</div>
             <div class="hp-add-button">+70</div>
         </div>
-        <div class="shield"><img src="./shield.png" alt="盾牌"></div>
+        <div class="icon-container">
+            <img src="spider.png" class="spider-icon" style="display: none;">
+            <img src="shield.png" class="shield">
+        </div>
         <div class="hp-display">
             <span class="current-hp">10</span>
             <span class="max-hp">/&nbsp;10</span>
@@ -67,6 +70,7 @@
 
      <!-- MENU彈窗 -->
      <div class="menu-popup">
+        <button class="menu-option menu-boss-item" style="display: none;">BOSS指示物</button>
         <button class="menu-option menu-game-rules">遊戲規則</button>
         <button class="menu-option menu-status-list">狀態列表</button>
         <button class="menu-option menu-adjust-hp">調整生命</button>
@@ -77,6 +81,13 @@
     <!-- 黑色半透明遮罩 -->
     <div class="black-overlay"></div>
 
+    <!-- BOSS指示物彈窗 -->
+    <div class="popup boss-popup" style="display: none;">
+        <div class="popup-title" style="visibility: hidden;">BOSS指示物</div>
+        <button class="boss-queen-button">蜘蛛女皇</button>
+        <button class="close-boss-popup">關閉</button>
+    </div>
+    
     <!-- 遊戲規則彈窗 -->
     <div class="game-rules-popup" style="display: none;">
         <h2>遊戲規則</h2>
