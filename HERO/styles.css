@@ -202,12 +202,12 @@ html, body {
 
 /* 當前 HP 的樣式 */
 .current-hp {
-    font-size: 10rem;
+    font-size: 9.6rem;
 }
 
 /* 最大 HP 的樣式 */
 .max-hp {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
 }
 
 /* 減少 HP 按鈕組的樣式 */
@@ -643,7 +643,7 @@ html, body {
         font-size: 2.5rem;
     }
     .current-hp{
-        font-size: 11.4rem;
+        font-size: 11rem;
     }
     .hp-display{
         margin: -.8rem;
