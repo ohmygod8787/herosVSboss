@@ -456,6 +456,11 @@ html, body {
     font-weight: bold;
 }
 
+.red-bold-text{
+    color: red;
+    font-weight: bold;
+}
+
 .close-status-popup {
     background-color: #00aaff;
     color: white;
