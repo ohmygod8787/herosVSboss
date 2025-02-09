@@ -40,24 +40,35 @@ $(document).ready(function () {
         if (job === "黑色") {
             $(this).addClass("selected-warrior");
             $("body").css("background-color", "black");
-            $(".shield").show(); // 顯示盾牌
-            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
+            $(".shield").show();
+            $(".spider-icon").hide(); // 隱藏蟲子
+            $(".hp-SUB-button.all-button").text("All");
         } else if (job === "綠色") {
             $(this).addClass("selected-rogue");
             $("body").css("background-color", "#008000");
-            $(".shield").show(); // 顯示盾牌
-            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
+            $(".shield").show();
+            $(".spider-icon").hide();
+            $(".hp-SUB-button.all-button").text("All");
         } else if (job === "灰色") {
             $(this).addClass("selected-priest");
             $("body").css("background-color", "#acabab");
-            $(".shield").show(); // 顯示盾牌
-            $(".hp-SUB-button.all-button").text("All"); // 恢復 All 按鈕
+            $(".shield").show();
+            $(".spider-icon").hide();
+            $(".hp-SUB-button.all-button").text("All");
         } else if (job === "BOSS") {
             $(this).addClass("selected-boss");
-            $("body").css("background-color", "#4B0082"); // 深紫色
+            $("body").css("background-color", "#4B0082");
             $(".shield").hide(); // 隱藏盾牌
-            $(".hp-SUB-button.all-button").text("-100"); // **BOSS 時變成 -100**
+            $(".spider-icon").hide(); // **修改這行，BOSS 初始時隱藏蟲子**
+            $(".hp-SUB-button.all-button").text("-100");
         }
+
+        if (job === "BOSS") {
+            $(".menu-boss-item").show(); // 顯示 BOSS 指示物按鈕
+        } else {
+            $(".menu-boss-item").hide(); // 其他職業隱藏它
+        }
+
         selectedJob = job;
     });
 
@@ -143,7 +154,20 @@ $(document).ready(function () {
     if ($(".menu-status-list").length === 0) {
         $(".menu-popup .menu-game-rules").after('<button class="menu-option menu-status-list">狀態列表</button>');
     }
+    
+    // BOSS指示物 彈窗開啟
+    $(".menu-boss-item").click(function () {
+        $(".menu-popup").fadeOut(); // 先關閉 menu
+        $(".overlay").fadeIn();
+        $(".boss-popup").fadeIn();
+    });
 
+    // BOSS指示物 彈窗關閉
+    $(".close-boss-popup").click(function () {
+        $(".boss-popup").fadeOut();
+        $(".overlay").fadeOut();
+    });
+    
     // 監聽「狀態列表」按鈕點擊
     $(".menu-status-list").click(function () {
         $(".overlay").fadeIn();
@@ -179,15 +203,37 @@ $(document).ready(function () {
         $(".menu-popup").fadeOut();
     });
 
+    // 點擊 BOSS 指示物的「蜘蛛女皇」按鈕
+    $(".boss-queen-button").click(function () {
+        if ($(".spider-icon").is(":visible")) {
+            $(".spider-icon").hide();
+            $(this).text("蜘蛛女皇"); // 變回原始狀態
+        } else {
+            $(".spider-icon").show();
+            $(this).text("蜘蛛女皇(已開啟)"); // 變成開啟狀態
+        }
+    });
+
     // 點擊遮罩時，關閉「menu-popup、遊戲規則、狀態列表」
     $(".overlay").click(function () {
-        $(".game-rules-popup, .status-list-popup, .menu-popup, .confirm-popup").fadeOut();
+        $(".game-rules-popup, .status-list-popup, .menu-popup, .confirm-popup, .boss-popup").fadeOut();
         $(this).fadeOut(); // 隱藏遮罩
     });
 
     $(".menu-change-job").click(function () {
+        $(".spider-icon").hide(); // 重新開始時蟲子隱藏
+        $(".boss-queen-button").text("蜘蛛女皇"); // 恢復原始文字
         hidePopup();
         showPopup(".confirm-popup");
+    });
+
+    // 切換蟲子透明度
+    $(".spider-icon").click(function () {
+        if ($(this).css("opacity") == 1) {
+            $(this).css("opacity", 0.5); // 變半透明
+        } else {
+            $(this).css("opacity", 1); // 變全不透明
+        }
     });
 
     $(".confirm-yes").click(function () {
