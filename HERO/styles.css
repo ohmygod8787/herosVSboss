@@ -183,7 +183,7 @@ html, body {
 }
 
 /* 盾牌按鈕的樣式 */
-.shield {
+.shield,.spider-icon {
     border-radius: 50%;
     color: black;
     position: absolute;
@@ -191,6 +191,15 @@ html, body {
 }
 .shield img{
     width: 95%;
+}
+
+.spider-icon{
+    opacity: 0.15; /* 初始為半透明 */
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    display: none; /* 初始隱藏 */
+    width: 92px;
+    height: 92px;
 }
 
 /* HP 顯示區域的樣式 */
@@ -323,6 +332,49 @@ html, body {
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 1001; /* 在彈窗下方，但在其他元素上方 */
 }
+
+/* BOSS指示物彈窗 */
+.boss-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+.boss-queen-button {
+    background: #4B0082;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.close-boss-popup {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    width: 100px;
+    margin-top: 30px;
+}
+
 
 /* 被動技能彈窗 */
 .passive-skill-popup {
